@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Barcode_Scanner.MainPage"
+             Title="">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Barcode" Clicked="Barcode_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="barcode.png" />
+                    <On Platform="Android" Value="barcode.png" />
+                    <On Platform="UWP" Value="Assets\barcode.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>       
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="iOS">
+                        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Source="example.png" VerticalOptions="Center" />
+                    </On>
+                    <On Platform="Android">
+                        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Source="example.png" VerticalOptions="Center" />
+                    </On>
+                    <On Platform="UWP">
+                        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Source="Assets\example.png" VerticalOptions="Center" />
+                    </On>
+                </OnPlatform>
+
+                <Grid Padding="10" Grid.Row="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="1" Grid.Row="0" Text="Search" />
+                    <Entry Grid.Column="1" Grid.Row="1"
+                           Text="{Binding SearchInput}"
+                           Completed="Search_Completed"/>
+
+
+                    <Button Grid.Column="1" Grid.Row="2" Text="Submit" Command="{Binding SubmitSearchCommand}" Margin="0,20,0,0" />
+
+                    <Button Grid.Column="1" Grid.Row="3" Text="Clear" BorderWidth="0" Command="{Binding ClearCommand}" />
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
